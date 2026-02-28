@@ -46,5 +46,5 @@ python -m unittest discover -s tests -v
 ```
 
 ## AI Usage Disclosure
-I used Codex and all prompts are documented in `prompts.md`.
-ChatGPT link: `https://chatgpt.com/c/69a34532-e3a8-838a-ad9e-d7190999e388`
+- I used Codex and all prompts are documented in `prompts.md`.
+- ChatGPT link: `https://chatgpt.com/c/69a34532-e3a8-838a-ad9e-d7190999e388`
