@@ -246,3 +246,10 @@ Use this template for each new prompt:
 - Context: Clarify whether generated output should be committed or ignored.
 - User Prompt:
   Do I need to push the output table to the git or is it better to add it to the .gitignore?
+
+## Prompt 17
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Complete final validation and polish steps from plan.
+- User Prompt:
+  Complete the final steps of the plan.md

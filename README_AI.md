@@ -132,3 +132,24 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 
 3. Current status
 - Recommended approach: keep `exchange_rates.md` tracked in Git for this assignment deliverable.
+
+## Latest Update (2026-02-28, Final Plan Steps Complete)
+1. What changed
+- Added `app/config.py` constants for input/output paths.
+- Added transform-level validation:
+  - `validate_daily_against_historical_latest(...)` checks that each daily currency value matches the latest historical point on the same date.
+- Updated `main.py` to use config paths and run this validation before output generation.
+- Wrote full project documentation in `README.md`:
+  - purpose, structure, run instructions, output format, and validation behavior.
+- Updated `requirements.txt` to explicitly state no external dependencies are required.
+- Updated `plan.md` completion status section to mark all steps done.
+- Logged the user request in `prompts.md` as Prompt 17.
+
+2. Why it changed
+- To complete plan step 5 (validation and polish) and make the repository submission-ready.
+
+3. Current status
+- End-to-end run succeeds.
+- `exchange_rates.md` is generated with required columns.
+- Validation confirms daily values align with latest historical data.
+- Documentation and prompt/memory tracking are up to date.

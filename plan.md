@@ -44,8 +44,15 @@ Build a small Python 3.12+ ETL program that extracts ECB FX reference rates, tra
 
 ## Acceptance Checklist
 - Script runs from start to finish on Python 3.12+.
-- Data is extracted from both ECB endpoints.
+- Data is extracted from ECB daily and historical datasets (from local CSV files in `data/`).
 - Only `USD`, `SEK`, `GBP`, `JPY` are included.
 - Mean historical rates are correctly calculated.
 - `exchange_rates.md` or `exchange_rates.html` exists in project root.
 - README + AI usage disclosure are present.
+
+## Completion Status (2026-02-28)
+- Step 1 (Project setup): completed
+- Step 2 (Extract): completed via provided local ECB CSV files in `data/`
+- Step 3 (Transform): completed
+- Step 4 (Load): completed (`exchange_rates.md`)
+- Step 5 (Validation and polish): completed

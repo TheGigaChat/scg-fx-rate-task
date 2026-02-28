@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from app.config import DAILY_RATES_CSV_PATH, HISTORICAL_RATES_CSV_PATH, OUTPUT_MARKDOWN_PATH
 from app.load import write_exchange_rates_markdown
 from app.transform import (
     TARGET_CURRENCIES,
@@ -7,15 +8,17 @@ from app.transform import (
     format_rate,
     parse_daily_rates_latest,
     parse_historical_rates_series,
+    validate_daily_against_historical_latest,
 )
 
 
 def main() -> None:
-    daily_csv_path: Path = Path("data/eurofxref.csv")
-    historical_csv_path: Path = Path("data/eurofxref-hist.csv")
-    output_markdown_path: Path = Path("exchange_rates.md")
+    daily_csv_path: Path = DAILY_RATES_CSV_PATH
+    historical_csv_path: Path = HISTORICAL_RATES_CSV_PATH
+    output_markdown_path: Path = OUTPUT_MARKDOWN_PATH
     latest_date, latest_rates = parse_daily_rates_latest(daily_csv_path)
     historical_series = parse_historical_rates_series(historical_csv_path)
+    validate_daily_against_historical_latest(latest_date, latest_rates, historical_series)
     mean_historical_rates = compute_mean_historical_rates(historical_series)
 
     col_currency: int = 13
@@ -46,6 +49,7 @@ def main() -> None:
 
     write_exchange_rates_markdown(output_markdown_path, table_rows)
     print(f"\nSaved markdown output to: {output_markdown_path}")
+    print("Validation check: daily rates match latest historical points.")
 
 
 if __name__ == "__main__":

@@ -135,3 +135,33 @@ def compute_mean_historical_rates(series_by_currency: RateSeries) -> Dict[str, f
 def format_rate(value: float, decimals: int = DEFAULT_DECIMALS) -> str:
     """Format numeric rate with consistent rounding."""
     return f"{value:.{decimals}f}"
+
+
+def validate_daily_against_historical_latest(
+    latest_date: date,
+    latest_rates: Dict[str, float],
+    historical_series: RateSeries,
+    tolerance: float = 1e-9,
+) -> None:
+    """
+    Validate that daily rates match the latest point in historical series.
+    """
+    for currency, daily_rate in latest_rates.items():
+        historical_values: List[Tuple[date, float]] = historical_series.get(currency, [])
+        if not historical_values:
+            raise ValueError(
+                f"Missing historical series for currency '{currency}'."
+            )
+
+        historical_latest_date, historical_latest_rate = historical_values[0]
+        if historical_latest_date != latest_date:
+            raise ValueError(
+                f"Date mismatch for '{currency}': daily={latest_date}, "
+                f"historical latest={historical_latest_date}."
+            )
+
+        if abs(historical_latest_rate - daily_rate) > tolerance:
+            raise ValueError(
+                f"Rate mismatch for '{currency}' on {latest_date}: "
+                f"daily={daily_rate}, historical={historical_latest_rate}."
+            )
