@@ -3,9 +3,10 @@ from __future__ import annotations
 import csv
 from datetime import date, datetime
 from pathlib import Path
-from typing import Dict, Sequence, Tuple
+from typing import Dict, List, Sequence, Tuple
 
 TARGET_CURRENCIES: tuple[str, ...] = ("USD", "SEK", "GBP", "JPY")
+RateSeries = Dict[str, List[Tuple[date, float]]]
 
 
 def _parse_ecb_date(value: str) -> date:
@@ -67,3 +68,50 @@ def parse_daily_rates_latest(
         raise ValueError("Daily rates CSV contains no valid data rows.")
 
     return latest_date, latest_rates
+
+
+def parse_historical_rates_series(
+    csv_path: Path, currencies: Sequence[str] = TARGET_CURRENCIES
+) -> RateSeries:
+    """
+    Parse historical rates CSV and collect full time-series for requested currencies.
+    """
+    series_by_currency: RateSeries = {currency: [] for currency in currencies}
+
+    with csv_path.open("r", encoding="utf-8-sig", newline="") as file:
+        reader = csv.DictReader(file, skipinitialspace=True)
+        if not reader.fieldnames:
+            raise ValueError("Historical rates CSV has no headers.")
+
+        for row in reader:
+            normalized_row: Dict[str, str] = {
+                (key or "").strip(): (value or "").strip()
+                for key, value in row.items()
+            }
+            raw_date: str = normalized_row.get("Date", "")
+            if not raw_date:
+                continue
+
+            row_date: date = _parse_ecb_date(raw_date)
+            for currency in currencies:
+                raw_value: str = normalized_row.get(currency, "")
+                if not raw_value or raw_value == "N/A":
+                    continue
+                try:
+                    rate: float = float(raw_value)
+                except ValueError as error:
+                    raise ValueError(
+                        f"Invalid historical rate '{raw_value}' for currency '{currency}' on {row_date}."
+                    ) from error
+                series_by_currency[currency].append((row_date, rate))
+
+    missing_currencies: List[str] = [
+        currency for currency, values in series_by_currency.items() if not values
+    ]
+    if missing_currencies:
+        missing_list: str = ", ".join(missing_currencies)
+        raise ValueError(
+            f"Historical rates CSV has no valid values for: {missing_list}."
+        )
+
+    return series_by_currency

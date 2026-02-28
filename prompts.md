@@ -208,3 +208,11 @@ Use this template for each new prompt:
   Read the readme_ai.md file to understand on what we are working. Also read the agents.md file to understand the rules.
 
   Let's do this small step: Parse daily rates and capture latest values for `USD`, `SEK`, `GBP`, `JPY`.
+
+## Prompt 12
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Implement historical transform step.
+- User Prompt:
+  Lets continue with the next step:
+  - Parse historical rates and collect full time-series values for those currencies.

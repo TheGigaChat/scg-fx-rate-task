@@ -47,3 +47,21 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 3. Current status
 - Daily-rate parsing for target currencies is implemented and wired in the entry point.
 - Historical parsing, mean calculation, and final markdown/html load step are still pending.
+
+## Latest Update (2026-02-28, Historical Step)
+1. What changed
+- Added `parse_historical_rates_series` in `app/transform.py`.
+  - Reads `data/eurofxref-hist.csv`.
+  - Collects full time-series values as `(date, rate)` pairs for `USD`, `SEK`, `GBP`, `JPY`.
+  - Skips blank and `N/A` values safely.
+  - Validates invalid numeric values and ensures each target currency has data.
+- Updated `main.py` to call the historical parser and print a compact summary (count + latest point).
+- Logged the new user request in `prompts.md` as Prompt 12.
+
+2. Why it changed
+- This implements the next planned transform step: parse historical rates and collect full time-series for selected currencies.
+
+3. Current status
+- Daily rates parsing is complete.
+- Historical time-series parsing for target currencies is complete.
+- Mean historical-rate calculation and final table output generation are pending.
