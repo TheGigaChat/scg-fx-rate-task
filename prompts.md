@@ -232,3 +232,17 @@ Use this template for each new prompt:
 - Context: Improve console table readability with consistent column widths.
 - User Prompt:
   Now when I run the main, I see the columns with the different width. Can you make the width consistent so it will be easy to understand which value and to which column is attached.
+
+## Prompt 15
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Implement load step to write final output file.
+- User Prompt:
+  Let's complete the step number 4 about the load.
+
+## Prompt 16
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Clarify whether generated output should be committed or ignored.
+- User Prompt:
+  Do I need to push the output table to the git or is it better to add it to the .gitignore?

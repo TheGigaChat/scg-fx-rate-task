@@ -102,3 +102,33 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 - Transform steps (daily parse, historical parse, mean calculation, formatting) are complete.
 - Console preview output is now aligned and readable.
 - Final file load step (`exchange_rates.md`/`exchange_rates.html`) remains pending.
+
+## Latest Update (2026-02-28, Load Step Complete)
+1. What changed
+- Implemented markdown load logic in `app/load.py`:
+  - `build_exchange_rates_markdown(...)` builds a 3-column markdown table.
+  - `write_exchange_rates_markdown(...)` writes output to file.
+- Updated `main.py` to:
+  - Build ordered rows for `USD`, `SEK`, `GBP`, `JPY`.
+  - Write final output to `exchange_rates.md` in the project root.
+  - Keep aligned console preview output.
+- Logged the new user request in `prompts.md` as Prompt 15.
+
+2. Why it changed
+- To complete plan step 4 (Load): persist transformed results into a final markdown table file.
+
+3. Current status
+- Transform pipeline is complete.
+- Load pipeline is complete for markdown output.
+- Running `python main.py` now generates `exchange_rates.md` successfully.
+- Remaining work is final validation/polish and documentation cleanup for submission readiness.
+
+## Latest Update (2026-02-28, Git Tracking Decision Guidance)
+1. What changed
+- Logged a user decision prompt in `prompts.md` (Prompt 16) about whether generated output should be committed or ignored.
+
+2. Why it changed
+- To keep prompt history complete and comply with project rules.
+
+3. Current status
+- Recommended approach: keep `exchange_rates.md` tracked in Git for this assignment deliverable.

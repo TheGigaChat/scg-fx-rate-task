@@ -34,7 +34,7 @@ Build a small Python 3.12+ ETL program that extracts ECB FX reference rates, tra
 4. Load
 - Build a table with exactly 3 columns:
   - `Currency Code`, `Rate`, `Mean Historical Rate`.
-- Write final result to `exchange_rates.md` (or `exchange_rates.html`) at repo root.
+- Write final result to `exchange_rates.md` at repo root.
 
 5. Validation and polish
 - Run end-to-end to confirm the file is generated without errors.
