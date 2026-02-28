@@ -3,18 +3,19 @@
 Small Python ETL solution for ECB euro foreign exchange reference rates.
 
 ## What This Script Does
-- Reads daily rates from `data/eurofxref.csv`
-- Reads historical rates from `data/eurofxref-hist.csv`
+- Downloads daily rates ZIP from ECB API endpoint
+- Downloads historical rates ZIP from ECB API endpoint
+- Extracts CSV content in memory (no raw data files saved locally)
 - Keeps only `USD`, `SEK`, `GBP`, `JPY`
 - Computes mean historical rate for each selected currency
 - Writes final markdown table to `exchange_rates.md`
 
 ## Project Structure
 - `main.py`: ETL entry point
+- `app/extract.py`: endpoint download and in-memory ZIP/CSV extraction
 - `app/transform.py`: parsing, validation, and transform logic
 - `app/load.py`: markdown table generation and file writing
 - `app/config.py`: file path configuration
-- `data/`: input CSV files
 - `exchange_rates.md`: generated output
 
 ## Requirements
@@ -25,6 +26,10 @@ Small Python ETL solution for ECB euro foreign exchange reference rates.
 ```bash
 python main.py
 ```
+
+The script fetches:
+- `https://www.ecb.europa.eu/stats/eurofxref/eurofxref.zip`
+- `https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip`
 
 ## Output
 Running the script generates `exchange_rates.md` in the project root with columns:

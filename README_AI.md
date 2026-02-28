@@ -13,9 +13,7 @@ Main objective:
 - Planning document exists: `plan.md`
 - Agent behavior rules exist: `AGENTS.md`
 - Prompt history exists: `prompts.md`
-- Input data is available in `data/`:
-  - `eurofxref.csv`
-  - `eurofxref-hist.csv`
+- Input extraction now uses ECB ZIP API endpoints directly (in-memory).
 - Small module layout scaffold exists with `app/` package and placeholder files.
 
 ## Working Principles
@@ -153,3 +151,23 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 - `exchange_rates.md` is generated with required columns.
 - Validation confirms daily values align with latest historical data.
 - Documentation and prompt/memory tracking are up to date.
+
+## Latest Update (2026-02-28, API ZIP In-Memory Extract)
+1. What changed
+- Updated `plan.md` to require ECB ZIP endpoint extraction, in-memory parsing, and saving only final output.
+- Implemented `app/extract.py`:
+  - Downloads `eurofxref.zip` and `eurofxref-hist.zip` from ECB.
+  - Reads CSV payloads directly from ZIP in memory.
+- Updated `app/config.py` to hold endpoint URLs and output path.
+- Refactored `app/transform.py` parsers to accept CSV content strings instead of local CSV file paths.
+- Updated `main.py` to run ETL from downloaded in-memory content.
+- Updated `README.md` to document endpoint-based extraction.
+- Deleted local `data/` folder with manually downloaded files.
+- Logged the request in `prompts.md` as Prompt 18.
+
+2. Why it changed
+- To align implementation strictly with assignment extract requirements and avoid storing raw source files locally.
+
+3. Current status
+- ETL now runs against ECB ZIP API endpoints and persists only `exchange_rates.md`.
+- End-to-end execution succeeds with the updated extraction approach.

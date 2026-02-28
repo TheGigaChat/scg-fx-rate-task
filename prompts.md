@@ -253,3 +253,10 @@ Use this template for each new prompt:
 - Context: Complete final validation and polish steps from plan.
 - User Prompt:
   Complete the final steps of the plan.md
+
+## Prompt 18
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Switch extract implementation to ECB ZIP API with in-memory processing and remove local data files.
+- User Prompt:
+  Now use all the rules for the ai as before. Update the plan.md to include the extract step from the zip API endpoint: https://www.ecb.europa.eu/stats/eurofxref/eurofxref.zip and https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip. Then we need to extract it in memory and then parse immediately, save only the final output. Also delete the data folder with the manually downloaded files.

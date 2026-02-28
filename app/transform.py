@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import csv
 from datetime import date, datetime
-from pathlib import Path
+from io import StringIO
 from typing import Dict, List, Sequence, Tuple
 
 TARGET_CURRENCIES: tuple[str, ...] = ("USD", "SEK", "GBP", "JPY")
@@ -22,7 +22,7 @@ def _parse_ecb_date(value: str) -> date:
 
 
 def parse_daily_rates_latest(
-    csv_path: Path, currencies: Sequence[str] = TARGET_CURRENCIES
+    csv_content: str, currencies: Sequence[str] = TARGET_CURRENCIES
 ) -> Tuple[date, Dict[str, float]]:
     """
     Parse the daily rates CSV and capture latest values for requested currencies.
@@ -30,7 +30,7 @@ def parse_daily_rates_latest(
     latest_date: date | None = None
     latest_rates: Dict[str, float] = {}
 
-    with csv_path.open("r", encoding="utf-8-sig", newline="") as file:
+    with StringIO(csv_content) as file:
         reader = csv.DictReader(file, skipinitialspace=True)
         if not reader.fieldnames:
             raise ValueError("Daily rates CSV has no headers.")
@@ -72,14 +72,14 @@ def parse_daily_rates_latest(
 
 
 def parse_historical_rates_series(
-    csv_path: Path, currencies: Sequence[str] = TARGET_CURRENCIES
+    csv_content: str, currencies: Sequence[str] = TARGET_CURRENCIES
 ) -> RateSeries:
     """
     Parse historical rates CSV and collect full time-series for requested currencies.
     """
     series_by_currency: RateSeries = {currency: [] for currency in currencies}
 
-    with csv_path.open("r", encoding="utf-8-sig", newline="") as file:
+    with StringIO(csv_content) as file:
         reader = csv.DictReader(file, skipinitialspace=True)
         if not reader.fieldnames:
             raise ValueError("Historical rates CSV has no headers.")

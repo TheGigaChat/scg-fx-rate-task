@@ -1,6 +1,7 @@
 from pathlib import Path
 
-from app.config import DAILY_RATES_CSV_PATH, HISTORICAL_RATES_CSV_PATH, OUTPUT_MARKDOWN_PATH
+from app.config import OUTPUT_MARKDOWN_PATH
+from app.extract import extract_ecb_csv_contents
 from app.load import write_exchange_rates_markdown
 from app.transform import (
     TARGET_CURRENCIES,
@@ -13,11 +14,10 @@ from app.transform import (
 
 
 def main() -> None:
-    daily_csv_path: Path = DAILY_RATES_CSV_PATH
-    historical_csv_path: Path = HISTORICAL_RATES_CSV_PATH
+    daily_csv_content, historical_csv_content = extract_ecb_csv_contents()
     output_markdown_path: Path = OUTPUT_MARKDOWN_PATH
-    latest_date, latest_rates = parse_daily_rates_latest(daily_csv_path)
-    historical_series = parse_historical_rates_series(historical_csv_path)
+    latest_date, latest_rates = parse_daily_rates_latest(daily_csv_content)
+    historical_series = parse_historical_rates_series(historical_csv_content)
     validate_daily_against_historical_latest(latest_date, latest_rates, historical_series)
     mean_historical_rates = compute_mean_historical_rates(historical_series)
 
