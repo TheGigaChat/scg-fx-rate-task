@@ -192,3 +192,10 @@ Use this template for each new prompt:
 - Context: Recovery request after accidental rollback.
 - User Prompt:
   I accidentally made a rollback for 3 files. Can you find them and restore.
+
+## Prompt 10
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Memory bank documentation request.
+- User Prompt:
+  Can you write the description of the project on which we are working right now to the readme_ai.md file. This is a memory bank, so update it after any change. Also write in into the ai rules.

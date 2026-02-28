@@ -35,3 +35,6 @@
 
 8. Log every user prompt
 - After any user prompt, update prompts.md to log the prompt using the project template.
+
+9. Update README_AI.md after any change
+- Treat README_AI.md as the memory bank and update it after any project change (code, docs, structure, or rules).
