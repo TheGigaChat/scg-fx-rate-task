@@ -157,3 +157,38 @@ Use this template for each new prompt:
   Submission
 
   Save your code in a public GitHub repository (or a similar platform) and include the link in your job application.
+
+## Prompt 5
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Package naming clarification.
+- User Prompt:
+  A question about the folder fx_etl/. Is it our app folder? Can we call it app or this is not correct?
+
+## Prompt 6
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: App package scaffold request.
+- User Prompt:
+  Geterate this project structure but use app folder/package.
+
+## Prompt 7
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Add mandatory prompt-logging rule.
+- User Prompt:
+  write to the agents rule, that after any prompt that I do you must log it.
+
+## Prompt 8
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Gitignore expansion request.
+- User Prompt:
+  Do I need to expand the .gitignore file for this project? Can you do it.
+
+## Prompt 9
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Recovery request after accidental rollback.
+- User Prompt:
+  I accidentally made a rollback for 3 files. Can you find them and restore.

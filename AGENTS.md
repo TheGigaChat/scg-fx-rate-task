@@ -32,3 +32,6 @@
 
 7. Suggest commit name after code changes
 - After every code change, end the response with one clean, descriptive commit name suggestion.
+
+8. Log every user prompt
+- After any user prompt, update prompts.md to log the prompt using the project template.
