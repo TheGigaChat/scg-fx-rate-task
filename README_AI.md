@@ -30,3 +30,20 @@ After any project change (code, docs, structure, or rules), update this file to 
 3. Current status of the project
 
 This file is the single AI-facing memory snapshot and must stay up to date.
+
+## Latest Update (2026-02-28)
+1. What changed
+- Implemented daily CSV transform logic in `app/transform.py`:
+  - Parses ECB date format.
+  - Reads daily CSV safely.
+  - Captures the latest available rates for `USD`, `SEK`, `GBP`, `JPY`.
+  - Validates missing/invalid values with clear errors.
+- Updated `main.py` to run this step and print latest date + selected currency rates.
+- Logged the current user request in `prompts.md` as Prompt 11.
+
+2. Why it changed
+- This is the current incremental step from `plan.md`: parse daily rates and capture latest values for the selected currencies.
+
+3. Current status
+- Daily-rate parsing for target currencies is implemented and wired in the entry point.
+- Historical parsing, mean calculation, and final markdown/html load step are still pending.

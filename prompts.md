@@ -199,3 +199,12 @@ Use this template for each new prompt:
 - Context: Memory bank documentation request.
 - User Prompt:
   Can you write the description of the project on which we are working right now to the readme_ai.md file. This is a memory bank, so update it after any change. Also write in into the ai rules.
+
+## Prompt 11
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Implement first transform step for daily rates.
+- User Prompt:
+  Read the readme_ai.md file to understand on what we are working. Also read the agents.md file to understand the rules.
+
+  Let's do this small step: Parse daily rates and capture latest values for `USD`, `SEK`, `GBP`, `JPY`.

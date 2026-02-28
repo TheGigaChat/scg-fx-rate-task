@@ -1,16 +1,16 @@
-# This is a sample Python script.
+from pathlib import Path
 
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+from app.transform import parse_daily_rates_latest
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main() -> None:
+    daily_csv_path: Path = Path("data/eurofxref.csv")
+    latest_date, latest_rates = parse_daily_rates_latest(daily_csv_path)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    print(f"Latest daily rates date: {latest_date.isoformat()}")
+    for currency_code, rate in latest_rates.items():
+        print(f"{currency_code}: {rate}")
+
+
+if __name__ == "__main__":
+    main()
