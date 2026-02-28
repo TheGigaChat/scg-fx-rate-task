@@ -202,3 +202,22 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 3. Current status
 - No functional behavior changed.
 - Project structure is cleaner with only actively used modules.
+
+## Latest Update (2026-02-28, Newline/Formatting Normalization)
+1. What changed
+- Normalized line endings and file formatting readability for:
+  - `main.py`
+  - `README.md`
+  - `exchange_rates.md`
+  - `tests/test_transform.py`
+  - `tests/test_load.py`
+  - `tests/test_extract.py`
+- Enforced UTF-8 + LF line endings and ensured final trailing newline in each file.
+- Logged the request in `prompts.md` as Prompt 21.
+
+2. Why it changed
+- To avoid “single-line/minified” raw file appearance and improve reviewer readability.
+
+3. Current status
+- Target files now contain standard multiline content with LF line endings.
+- Test suite still passes (`19/19`).

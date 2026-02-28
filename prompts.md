@@ -277,3 +277,14 @@ Use this template for each new prompt:
 - Context: Cleanup unused scaffold module.
 - User Prompt:
   Make this cleanup.
+
+## Prompt 21
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Normalize file formatting/newlines for reviewer readability.
+- User Prompt:
+  Your files look “minified” (everything on one line)
+
+  main.py, tests, README, even exchange_rates.md appear as single-line content when viewed raw. That’s a big readability hit for reviewers and makes the repo look careless even if the logic is good.
+
+  Fix: reformat files with normal newlines (and ideally run a formatter like black for Python). Even just “proper newlines + indentation” will immediately raise perceived quality.
