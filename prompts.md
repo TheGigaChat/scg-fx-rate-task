@@ -299,3 +299,10 @@ Use this template for each new prompt:
   Your validation uses historical_values[0] as the latest. That works only if the historical CSV is sorted newest-first (likely true), but it’s fragile.
 
   Fix: compute the latest point by max(values, key=lambda x: x[0]) (or sort once). This is a tiny change that makes your validation bulletproof.
+
+## Prompt 23
+- Date: 2026-03-01
+- Timezone: Europe/Kiev
+- Context: Repository cleanup for submission branch and AI disclosure text update.
+- User Prompt:
+  Now I want to keep my main as clean as possible. I keep the extended documentation for this project in a separate branch. So remove the requirements.txt and readme_ai.md also remove agents.md. Update the readme.md and in the ai usage section say that the chatGPT link is: https://chatgpt.com/c/69a34532-e3a8-838a-ad9e-d7190999e388. And I used Codex so all the prompts are documented in the file prompts.md
