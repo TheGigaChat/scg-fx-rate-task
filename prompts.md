@@ -225,3 +225,10 @@ Use this template for each new prompt:
   Nice, I like it. Let's continue with this step:
   - Compute mean historical rate per selected currency.
   - Apply consistent numeric formatting/rounding for output.
+
+## Prompt 14
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Improve console table readability with consistent column widths.
+- User Prompt:
+  Now when I run the main, I see the columns with the different width. Can you make the width consistent so it will be easy to understand which value and to which column is attached.

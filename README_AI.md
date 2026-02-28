@@ -85,3 +85,20 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 - Historical mean calculation is complete.
 - Consistent numeric formatting is complete.
 - Final load to `exchange_rates.md` / `exchange_rates.html` is still pending.
+
+## Latest Update (2026-02-28, Console Column Alignment)
+1. What changed
+- Updated `main.py` console output to use fixed-width aligned columns for:
+  - `Currency Code`
+  - `Rate`
+  - `Mean Historical Rate`
+- Added a separator line under the header for readability.
+- Logged the new user request in `prompts.md` as Prompt 14.
+
+2. Why it changed
+- To make terminal output easier to read by keeping values visually attached to stable columns.
+
+3. Current status
+- Transform steps (daily parse, historical parse, mean calculation, formatting) are complete.
+- Console preview output is now aligned and readable.
+- Final file load step (`exchange_rates.md`/`exchange_rates.html`) remains pending.
