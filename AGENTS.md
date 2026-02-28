@@ -29,3 +29,6 @@
 - Use explicit type hints in Python.
 - Keep functions small and testable.
 - Ensure the script runs end-to-end without manual fixes.
+
+7. Suggest commit name after code changes
+- After every code change, end the response with one clean, descriptive commit name suggestion.
