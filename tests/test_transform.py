@@ -102,6 +102,17 @@ class TestTransform(unittest.TestCase):
             latest_date, latest_rates, historical_series
         )
 
+    def test_validate_daily_against_historical_latest_success_with_unsorted_series(self) -> None:
+        latest_date = date(2026, 2, 27)
+        latest_rates = {"USD": 1.2}
+        historical_series = {
+            "USD": [(date(2026, 2, 26), 1.1), (date(2026, 2, 27), 1.2)]
+        }
+
+        validate_daily_against_historical_latest(
+            latest_date, latest_rates, historical_series
+        )
+
     def test_validate_daily_against_historical_latest_date_mismatch_raises(self) -> None:
         latest_date = date(2026, 2, 27)
         latest_rates = {"USD": 1.2}

@@ -288,3 +288,14 @@ Use this template for each new prompt:
   main.py, tests, README, even exchange_rates.md appear as single-line content when viewed raw. That’s a big readability hit for reviewers and makes the repo look careless even if the logic is good.
 
   Fix: reformat files with normal newlines (and ideally run a formatter like black for Python). Even just “proper newlines + indentation” will immediately raise perceived quality.
+
+## Prompt 22
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Harden historical latest-point validation against input ordering.
+- User Prompt:
+  Historical “latest” assumption
+
+  Your validation uses historical_values[0] as the latest. That works only if the historical CSV is sorted newest-first (likely true), but it’s fragile.
+
+  Fix: compute the latest point by max(values, key=lambda x: x[0]) (or sort once). This is a tiny change that makes your validation bulletproof.

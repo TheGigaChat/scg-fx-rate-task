@@ -153,7 +153,9 @@ def validate_daily_against_historical_latest(
                 f"Missing historical series for currency '{currency}'."
             )
 
-        historical_latest_date, historical_latest_rate = historical_values[0]
+        historical_latest_date, historical_latest_rate = max(
+            historical_values, key=lambda point: point[0]
+        )
         if historical_latest_date != latest_date:
             raise ValueError(
                 f"Date mismatch for '{currency}': daily={latest_date}, "

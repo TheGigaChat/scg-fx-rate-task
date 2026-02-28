@@ -221,3 +221,18 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 3. Current status
 - Target files now contain standard multiline content with LF line endings.
 - Test suite still passes (`19/19`).
+
+## Latest Update (2026-02-28, Robust Historical Latest Validation)
+1. What changed
+- Updated `validate_daily_against_historical_latest(...)` in `app/transform.py`:
+  - Replaced index-based latest assumption (`historical_values[0]`) with date-based selection using `max(..., key=lambda point: point[0])`.
+- Added test coverage in `tests/test_transform.py`:
+  - `test_validate_daily_against_historical_latest_success_with_unsorted_series`.
+- Logged the request in `prompts.md` as Prompt 22.
+
+2. Why it changed
+- To make validation resilient even if historical input rows are not ordered newest-first.
+
+3. Current status
+- Validation is now order-independent for historical series.
+- Test suite passes (`20/20`).
