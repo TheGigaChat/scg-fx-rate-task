@@ -40,6 +40,11 @@ Running the script generates `exchange_rates.md` in the project root with column
 ## Validation Included
 The script checks that daily rates match the latest date/rate points from historical data for each selected currency.
 
+## Run Tests
+```bash
+python -m unittest discover -s tests -v
+```
+
 ## AI Usage Disclosure
 AI usage and prompt logs are documented in:
 - `README_AI.md`

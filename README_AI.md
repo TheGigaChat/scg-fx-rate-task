@@ -171,3 +171,22 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 3. Current status
 - ETL now runs against ECB ZIP API endpoints and persists only `exchange_rates.md`.
 - End-to-end execution succeeds with the updated extraction approach.
+
+## Latest Update (2026-02-28, Unit Test Suite Added)
+1. What changed
+- Added `unittest` test suite under `tests/`:
+  - `tests/test_transform.py`
+  - `tests/test_load.py`
+  - `tests/test_extract.py`
+- Covered core interfaces in `app/transform.py`, `app/load.py`, and `app/extract.py`.
+- Extract tests use mocks and in-memory ZIP bytes to keep tests offline and deterministic.
+- Added test run instruction to `README.md`.
+- Logged this request in `prompts.md` as Prompt 19.
+
+2. Why it changed
+- To improve submission quality with stable automated checks while keeping zero external dependencies.
+
+3. Current status
+- Test suite passes: `19` tests, all green.
+- Smoke check `python main.py` still succeeds after test additions.
+- No production behavior changes were introduced by the tests.
