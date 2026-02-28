@@ -65,3 +65,23 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 - Daily rates parsing is complete.
 - Historical time-series parsing for target currencies is complete.
 - Mean historical-rate calculation and final table output generation are pending.
+
+## Latest Update (2026-02-28, Mean + Formatting Step)
+1. What changed
+- Added `compute_mean_historical_rates` to calculate arithmetic mean per target currency.
+- Added `format_rate` helper with a shared decimal precision rule (4 decimals) for consistent output rounding.
+- Updated `main.py` to print a clean three-column preview:
+  - `Currency Code`
+  - `Rate`
+  - `Mean Historical Rate`
+- Logged the new user request in `prompts.md` as Prompt 13.
+
+2. Why it changed
+- This implements the next planned transform step: compute mean historical rates and apply consistent output formatting.
+
+3. Current status
+- Daily parsing is complete.
+- Historical series parsing is complete.
+- Historical mean calculation is complete.
+- Consistent numeric formatting is complete.
+- Final load to `exchange_rates.md` / `exchange_rates.html` is still pending.

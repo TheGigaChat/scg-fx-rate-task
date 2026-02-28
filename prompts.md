@@ -216,3 +216,12 @@ Use this template for each new prompt:
 - User Prompt:
   Lets continue with the next step:
   - Parse historical rates and collect full time-series values for those currencies.
+
+## Prompt 13
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Implement historical mean and formatting step.
+- User Prompt:
+  Nice, I like it. Let's continue with this step:
+  - Compute mean historical rate per selected currency.
+  - Apply consistent numeric formatting/rounding for output.

@@ -7,6 +7,7 @@ from typing import Dict, List, Sequence, Tuple
 
 TARGET_CURRENCIES: tuple[str, ...] = ("USD", "SEK", "GBP", "JPY")
 RateSeries = Dict[str, List[Tuple[date, float]]]
+DEFAULT_DECIMALS: int = 4
 
 
 def _parse_ecb_date(value: str) -> date:
@@ -115,3 +116,22 @@ def parse_historical_rates_series(
         )
 
     return series_by_currency
+
+
+def compute_mean_historical_rates(series_by_currency: RateSeries) -> Dict[str, float]:
+    """Compute arithmetic mean historical rate for each currency."""
+    mean_by_currency: Dict[str, float] = {}
+
+    for currency, values in series_by_currency.items():
+        if not values:
+            raise ValueError(f"Cannot compute mean for '{currency}' with no values.")
+
+        total: float = sum(rate for _, rate in values)
+        mean_by_currency[currency] = total / len(values)
+
+    return mean_by_currency
+
+
+def format_rate(value: float, decimals: int = DEFAULT_DECIMALS) -> str:
+    """Format numeric rate with consistent rounding."""
+    return f"{value:.{decimals}f}"
