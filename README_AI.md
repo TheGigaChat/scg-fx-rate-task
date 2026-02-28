@@ -190,3 +190,15 @@ This file is the single AI-facing memory snapshot and must stay up to date.
 - Test suite passes: `19` tests, all green.
 - Smoke check `python main.py` still succeeds after test additions.
 - No production behavior changes were introduced by the tests.
+
+## Latest Update (2026-02-28, Cleanup Unused Module)
+1. What changed
+- Removed unused scaffold file `app/models.py`.
+- Logged the request in `prompts.md` as Prompt 20.
+
+2. Why it changed
+- To keep repository structure clean and avoid confusion from empty unused modules.
+
+3. Current status
+- No functional behavior changed.
+- Project structure is cleaner with only actively used modules.

@@ -270,3 +270,10 @@ Use this template for each new prompt:
   # Test Plan: Add Small, Stable Unit Tests for Current ETL Functions
 
   [Full detailed test plan with scope, interfaces, cases, and execution steps was provided in the prompt and implemented as requested.]
+
+## Prompt 20
+- Date: 2026-02-28
+- Timezone: Europe/Kiev
+- Context: Cleanup unused scaffold module.
+- User Prompt:
+  Make this cleanup.
